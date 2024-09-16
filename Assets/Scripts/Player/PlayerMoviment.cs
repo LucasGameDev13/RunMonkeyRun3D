@@ -29,6 +29,7 @@ public class PlayerMoviment : MonoBehaviour
     void Start()
     {
         playerRig = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -37,6 +38,7 @@ public class PlayerMoviment : MonoBehaviour
         PlayerRotation();
         PlayerMovement();
         PlayerJumping();
+        PlayerFreezeRotations();
     }
 
     private void PlayerMovement()
@@ -90,5 +92,12 @@ public class PlayerMoviment : MonoBehaviour
         transform.Rotate(Vector3.up *  _speed * Time.deltaTime);
         isMoving = true;
         playerRig.freezeRotation = false;
+    }
+
+    private void PlayerFreezeRotations()
+    {
+        playerRig.constraints = RigidbodyConstraints.FreezeRotationX |
+                                RigidbodyConstraints.FreezeRotationY | 
+                                RigidbodyConstraints.FreezeRotationZ;
     }
 }
