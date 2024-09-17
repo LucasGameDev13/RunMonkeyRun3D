@@ -22,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour
         JumpingAnimation();
     }
 
+    //Setting Up the Player's movement animation
     private void MovementAnimation()
     {
         if(!playerMoviment.IsMoving)
@@ -34,6 +35,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    //Setting Up the Player's Jumping animation
     private void JumpingAnimation()
     {
         if(playerMoviment.IsJumping)

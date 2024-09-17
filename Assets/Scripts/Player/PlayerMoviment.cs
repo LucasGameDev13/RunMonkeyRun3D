@@ -41,6 +41,8 @@ public class PlayerMoviment : MonoBehaviour
         PlayerFreezeRotations();
     }
 
+
+    //Front Movement Mechanics
     private void PlayerMovement()
     {
         if (Input.GetKey(KeyCode.W))
@@ -53,6 +55,7 @@ public class PlayerMoviment : MonoBehaviour
         }
     }
 
+    //Jump Mechanics
     private void PlayerJumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
@@ -64,6 +67,7 @@ public class PlayerMoviment : MonoBehaviour
         }
     }
 
+    //Rotation Mechanics
     private void PlayerRotation()
     {
         if (Input.GetKey(KeyCode.D))
@@ -80,6 +84,7 @@ public class PlayerMoviment : MonoBehaviour
         }
     }
 
+
     private void GetPlayerMovement(float speed)
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -94,6 +99,7 @@ public class PlayerMoviment : MonoBehaviour
         playerRig.freezeRotation = false;
     }
 
+    //Keeping player static to not rotate automatically
     private void PlayerFreezeRotations()
     {
         playerRig.constraints = RigidbodyConstraints.FreezeRotationX |

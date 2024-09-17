@@ -11,6 +11,9 @@ public class PlayerCollisions : MonoBehaviour
         playerMoviment = GetComponent<PlayerMoviment>();
     }
 
+
+    //Checking out the player's collision with the ground
+    //Controlling the jumping condition
     private void OnTriggerEnter(Collider other)
     {
         if(other != null)
@@ -18,7 +21,6 @@ public class PlayerCollisions : MonoBehaviour
             switch(other.gameObject.tag)
             {
                 case "Ground":
-                    Debug.Log("Ground");
                     playerMoviment.IsJumping = false;
                 break;
             }
