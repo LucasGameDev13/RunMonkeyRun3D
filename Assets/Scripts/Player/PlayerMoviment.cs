@@ -106,4 +106,6 @@ public class PlayerMoviment : MonoBehaviour
                                 RigidbodyConstraints.FreezeRotationY | 
                                 RigidbodyConstraints.FreezeRotationZ;
     }
+
+    //
 }
