@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class AnimalsMovement : MonoBehaviour
 {
-    [SerializeField] private AnimalsSO animalSo;
+    private SpawnerController spawnerController;
+    private AnimalsSO animalSo;
     private List<Transform> wayPaths;
     private int wayPathsIndex = 0;
 
+    private void Awake()
+    {
+        spawnerController = FindObjectOfType<SpawnerController>();
+        animalSo = spawnerController.currentAnimal();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        //Saving all the paths into a variable
+        //Getting the first path position to my position
         wayPaths = animalSo.GetAnimalPaths();
         transform.localPosition = wayPaths[wayPathsIndex].localPosition;
+        
     }
 
     // Update is called once per frame
@@ -22,14 +31,18 @@ public class AnimalsMovement : MonoBehaviour
         MoveAnimals();
     }
 
+    //Going through all the paths to move the caracter
     private void MoveAnimals()
     {
         if(wayPathsIndex < wayPaths.Count)
         {
             Vector3 target = wayPaths[wayPathsIndex].localPosition;
+            target.y = 0;
             float speed = animalSo.GetAnimalSpeed() * Time.deltaTime;
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, speed);
+            
             Vector3 direction = (target - transform.localPosition).normalized;
+            direction.y = 0;
 
             if (direction != Vector3.zero)
             {
