@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
+
+    [Header("Objects Type")]
+    [SerializeField] private bool isBoll;
+    [SerializeField] private bool isTrap;
+    [SerializeField] private bool isAnimal;
+
     [Header("Objects With Rotation")]
     [SerializeField] private bool isRotation;
     [SerializeField] private float ballRotationSpeed;
@@ -76,16 +82,10 @@ public class Obstacles : MonoBehaviour
             switch(other.gameObject.tag)
             {
                 case "Ground":
-                    Debug.Log("Ball on the ground");
+                    //Debug.Log("Ball on the ground");
                     //Call the ground effect
-                break;
-
-                case "Player":
-                    Debug.Log("Hit the player");
-                    //Call the gameover and restart the game
                 break;
             }
         }
     }
-
 }

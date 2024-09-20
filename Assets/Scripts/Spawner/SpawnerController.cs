@@ -11,14 +11,17 @@ public class SpawnerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Calling the animals only one time
         SpawnerCurrentAnimalSO();
     }
 
+    //Saving each animalSO inside of a variable
     public AnimalsSO currentAnimal()
     {
         return currentAnimalSO;
     }
 
+    //Spawner animals on the scene
     private void SpawnerCurrentAnimalSO()
     {
         for(int i = 0; i < animalsSO.Count; i++)
@@ -28,5 +31,4 @@ public class SpawnerController : MonoBehaviour
             Instantiate(currentAnimalSO.GetAnimalPrefab(), currentAnimalSO.GetAnimialPathsFirstPosition().localPosition, Quaternion.identity, transform);
         }
     }
-
 }

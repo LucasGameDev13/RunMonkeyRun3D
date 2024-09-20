@@ -54,12 +54,10 @@ public class AnimalsMovement : MonoBehaviour
             {
                 wayPathsIndex++;
             }
-
         }
         else
         {
             wayPathsIndex = 0;
         }
     }
-
 }
