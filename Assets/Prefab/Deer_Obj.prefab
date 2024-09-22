@@ -82,8 +82,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.38318142, y: 1.0595791, z: 1}
+  m_Center: {x: 0.0134990215, y: 0.4751823, z: 0}
 --- !u!114 &8857448564407339978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,11 +108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5702baf02d03ba3479677b2e6d988e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoll: 0
+  isTrap: 0
+  isAnimal: 1
   isRotation: 0
   ballRotationSpeed: 0
   isMoving: 0
   movementVector: {x: 0, y: 0, z: 0}
   period: 0
+  ballEffects: {fileID: 0}
 --- !u!1001 &2166119567105928891
 PrefabInstance:
   m_ObjectHideFlags: 0

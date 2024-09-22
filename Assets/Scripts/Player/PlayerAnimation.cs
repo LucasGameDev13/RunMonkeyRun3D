@@ -7,6 +7,12 @@ public class PlayerAnimation : MonoBehaviour
 
     private Animator playerAnim;
     private PlayerMoviment playerMoviment;
+    private TimeLineController timeLineController;
+
+    private void Awake()
+    {
+        timeLineController = FindObjectOfType<TimeLineController>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +26,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         MovementAnimation();
         JumpingAnimation();
+        DeathAnimation();
     }
 
     //Setting Up the Player's movement animation
@@ -42,6 +49,13 @@ public class PlayerAnimation : MonoBehaviour
         {
             playerAnim.SetInteger("transition", 2);
         }
+    }
+
+
+    //Setting Up the Player's animation death
+    private void DeathAnimation()
+    {
+        playerAnim.SetBool("isAlive", timeLineController.IsAlive);
     }
 
 

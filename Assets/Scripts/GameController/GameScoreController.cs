@@ -17,12 +17,6 @@ public class GameScoreController : MonoBehaviour
         CleanGameScoreLetters();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //Filling up the variable with the letters 
     public void AddGameScoreLetters(GameObject _letter)
     {

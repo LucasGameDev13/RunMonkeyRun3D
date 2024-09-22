@@ -23,7 +23,9 @@ public class Obstacles : MonoBehaviour
     [SerializeField] private Vector3 movementVector;
     [SerializeField] private float period;
 
-    
+    [Header("Objects Effects")]
+    [SerializeField] private ParticleSystem ballEffects;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +76,7 @@ public class Obstacles : MonoBehaviour
         }
     }
 
-    //Setting up the obstacles collision
+    //Setting up the obstacles collision and effects
     private void OnTriggerEnter(Collider other)
     {
         if(other != null)
@@ -82,8 +84,20 @@ public class Obstacles : MonoBehaviour
             switch(other.gameObject.tag)
             {
                 case "Ground":
-                    //Debug.Log("Ball on the ground");
-                    //Call the ground effect
+                    if(isBoll)
+                    {
+                        ballEffects.Play();
+                    }
+                break;
+            }
+
+            switch(other.gameObject.layer)
+            {
+                case 4:
+                if (isBoll)
+                {
+                    ballEffects.Stop();
+                }
                 break;
             }
         }

@@ -11,7 +11,6 @@ public class GameController : MonoBehaviour
     {
 
         // Persisting the class GameController 
-
         if (instance != null)
         {
             Destroy(gameObject);

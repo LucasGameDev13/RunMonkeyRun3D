@@ -11,6 +11,7 @@ public class CollectiblesObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Rotating objects
         transform.Rotate(Vector3.up * objectsRotationSpeed * Time.deltaTime);
     }
 

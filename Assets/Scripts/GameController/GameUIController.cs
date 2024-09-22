@@ -8,22 +8,28 @@ public class GameUIController : MonoBehaviour
 {
     [Header("Letters Settings")]
     private GameScoreController gameScoreController;
+    private PlayerHealth playerHealth;
     [SerializeField] private List<GameObject> lettersText = new List<GameObject>();
     [SerializeField] private Color letterAlpha;
 
     [Header("Score Settings")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [Header("Player Health Settings")]
+    [SerializeField] private TextMeshProUGUI playerHealthText;
+
 
     private void Awake()
     {
         gameScoreController = FindObjectOfType<GameScoreController>();
+        playerHealth = FindObjectOfType<PlayerHealth>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         SetScoreText();
+        SetPlayerHealth();
     }
 
     // Update is called once per frame
@@ -31,6 +37,7 @@ public class GameUIController : MonoBehaviour
     {
         ColletingLetters();
         SetScoreText();
+        SetPlayerHealth();
     }
 
     //Cheking out the letter was collected and changing the UI letter
@@ -50,5 +57,10 @@ public class GameUIController : MonoBehaviour
     private void SetScoreText()
     {
         scoreText.text = gameScoreController.GetGameScore().ToString();
+    }
+
+    private void SetPlayerHealth()
+    {
+        playerHealthText.text = playerHealth.PlayerHealthValue().ToString();
     }
 }

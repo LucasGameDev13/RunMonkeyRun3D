@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - Collectibles1
   - Collectibles2
+  - Fatal
   layers:
   - Default
   - TransparentFX

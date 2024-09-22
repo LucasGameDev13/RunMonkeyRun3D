@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMoviment : MonoBehaviour
 {
+    private TimeLineController timeLineController;
     private Rigidbody playerRig;
     [SerializeField] private float horizontalRotationSpeed;
     [SerializeField] private float horizontalPlayerSpeed;
@@ -25,6 +26,11 @@ public class PlayerMoviment : MonoBehaviour
         set { isJumping = value; }
     }
 
+    private void Awake()
+    {
+        timeLineController = FindObjectOfType<TimeLineController>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +41,13 @@ public class PlayerMoviment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerRotation();
-        PlayerMovement();
-        PlayerJumping();
-        PlayerFreezeRotations();
+        if (timeLineController.IsAlive)
+        {
+            PlayerRotation();
+            PlayerMovement();
+            PlayerJumping();
+            PlayerFreezeRotations();
+        }
     }
 
 
@@ -85,12 +94,14 @@ public class PlayerMoviment : MonoBehaviour
     }
 
 
+    //Getting the player movement
     private void GetPlayerMovement(float speed)
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         isMoving = true;
     }
 
+    //Getting the player rotation
     private void GetPlayerRotation(float _speed)
     {
         playerRig.freezeRotation = true;
