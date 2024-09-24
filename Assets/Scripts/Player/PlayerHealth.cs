@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject[] playerMeshRenderer;
     [SerializeField] private float blinkInterval;
     private bool isRecovery;
+    private bool playOnce;
 
 
     public int _PlayerHealth
@@ -21,15 +22,30 @@ public class PlayerHealth : MonoBehaviour
         get { return isRecovery; }
     }
 
+    private void Update()
+    {
+        if (playerHealth == 0 && !playOnce)
+        {
+            Invoke("GameOverLoseSoundEffect", 3f);
+            playOnce = true;
+        }
+    }
+
     //Setting up the player's health
     public void PlayerHealthController()
     {
         if(playerHealth > 0 && !isRecovery)
         {
+            GameAudioController.instance.PlayerHitSound();
             playerHealth--;
             isRecovery = true;
             StartCoroutine("RecoveryTimeCounting");
         }
+    }
+
+    private void GameOverLoseSoundEffect()
+    {
+        GameAudioController.instance.GameOverLoseSound();
     }
 
     public int PlayerHealthValue()

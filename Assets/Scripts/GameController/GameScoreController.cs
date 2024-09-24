@@ -10,7 +10,6 @@ public class GameScoreController : MonoBehaviour
     [Header("Letters Holder")]
     [SerializeField] private List<GameObject> gameScoreLetters = new List<GameObject>();
 
-
     // Start is called before the first frame update
     void Start()
     {

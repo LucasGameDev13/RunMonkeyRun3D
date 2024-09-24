@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void LoadScene(string _scene)
     {
-        
+        GameAudioController.instance.ButtonsSounds();
+        StartCoroutine(LoadSceneButtons(_scene));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GameExit()
     {
-        
+        GameAudioController.instance.ButtonsSounds();
+        StartCoroutine("ExitButton");
     }
+
+    IEnumerator LoadSceneButtons(string _scene)
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(_scene);
+    }
+
+    IEnumerator ExitButton()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Exit Game");
+        Application.Quit();
+    }
+
 }

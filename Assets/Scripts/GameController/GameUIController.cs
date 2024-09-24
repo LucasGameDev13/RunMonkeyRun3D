@@ -10,13 +10,21 @@ public class GameUIController : MonoBehaviour
     private GameScoreController gameScoreController;
     private PlayerHealth playerHealth;
     [SerializeField] private List<GameObject> lettersText = new List<GameObject>();
+    [SerializeField] private List<GameObject> lettersFinalText = new List<GameObject>();
     [SerializeField] private Color letterAlpha;
 
     [Header("Score Settings")]
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
 
     [Header("Player Health Settings")]
     [SerializeField] private TextMeshProUGUI playerHealthText;
+
+    [Header("Game Play UI")]
+    [SerializeField] private GameObject gameplayUI;
+
+    [Header("Game Overs Settings")]
+    [SerializeField] private GameObject[] gameOvers;
 
 
     private void Awake()
@@ -47,9 +55,13 @@ public class GameUIController : MonoBehaviour
         {
             int collectibleObjIndex = collectedLetter.GetComponent<CollectiblesObjects>().GetObjectIndex();
 
-            if (collectibleObjIndex >= 0 && collectibleObjIndex < lettersText.Count)
+            bool checkingCondition = collectibleObjIndex < lettersText.Count;
+            bool checkingCondition2 = collectibleObjIndex < lettersFinalText.Count;
+
+            if (collectibleObjIndex >= 0 && checkingCondition || checkingCondition2)
             {
                 lettersText[collectibleObjIndex].GetComponent<TextMeshProUGUI>().color = letterAlpha;
+                lettersFinalText[collectibleObjIndex].GetComponent<TextMeshProUGUI>().color = letterAlpha;
             }
         }
     }
@@ -57,10 +69,18 @@ public class GameUIController : MonoBehaviour
     private void SetScoreText()
     {
         scoreText.text = gameScoreController.GetGameScore().ToString();
+        finalScoreText.text = gameScoreController.GetGameScore().ToString();
     }
 
     private void SetPlayerHealth()
     {
         playerHealthText.text = playerHealth.PlayerHealthValue().ToString();
+    }
+
+    public void SetActiveGameOvers(bool _lose, bool _win)
+    {
+        gameOvers[0].SetActive(_lose);
+        gameOvers[1].SetActive(_win);
+        gameplayUI.SetActive(false);
     }
 }
