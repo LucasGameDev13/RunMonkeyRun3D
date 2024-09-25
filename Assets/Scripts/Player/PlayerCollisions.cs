@@ -35,6 +35,8 @@ public class PlayerCollisions : MonoBehaviour
 
     //Checking out the player's collision with the ground
     //Controlling the jumping condition
+    //Controlling the game effects 
+    //Controlling the game objects collecting
     private void OnTriggerEnter(Collider other)
     {
         if(other != null)

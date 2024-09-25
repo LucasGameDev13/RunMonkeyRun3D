@@ -24,11 +24,18 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+        //Controlling the gameoverlosesound after the player death
         if (playerHealth == 0 && !playOnce)
         {
             Invoke("GameOverLoseSoundEffect", 3f);
             playOnce = true;
         }
+    }
+
+    //Method to call the gameover lose sound
+    private void GameOverLoseSoundEffect()
+    {
+        GameAudioController.instance.GameOverLoseSound();
     }
 
     //Setting up the player's health
@@ -41,11 +48,6 @@ public class PlayerHealth : MonoBehaviour
             isRecovery = true;
             StartCoroutine("RecoveryTimeCounting");
         }
-    }
-
-    private void GameOverLoseSoundEffect()
-    {
-        GameAudioController.instance.GameOverLoseSound();
     }
 
     public int PlayerHealthValue()

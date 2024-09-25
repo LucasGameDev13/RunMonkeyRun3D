@@ -66,17 +66,20 @@ public class GameUIController : MonoBehaviour
         }
     }
 
+    //Drawing the score on the UI
     private void SetScoreText()
     {
         scoreText.text = gameScoreController.GetGameScore().ToString();
         finalScoreText.text = gameScoreController.GetGameScore().ToString();
     }
 
+    //Drawing the health on the UI
     private void SetPlayerHealth()
     {
         playerHealthText.text = playerHealth.PlayerHealthValue().ToString();
     }
 
+    //Controlling the gameovers windowns
     public void SetActiveGameOvers(bool _lose, bool _win)
     {
         gameOvers[0].SetActive(_lose);
